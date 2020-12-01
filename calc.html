@@ -28,7 +28,7 @@
             <input type='text' id='number' />
             <input type='button' value='Add To List' onclick="addToList()"  />
             <input type='button' value='Clear Display' onclick='clearDisplay()' />
-            <input type='button' value='Reset Calculator' onclick=""   />
+            <input type='button' value='Reset Calculator' onclick="resetCalc()"   />
 
             <br/>
             <input type='button' value='Sum'  onclick="sum()" />
@@ -57,7 +57,7 @@
 
         </ul>
 
-        <input type='button' value='refresh list'  />
+        <input type='button' value='refresh list' onclick="refreshList()"  />
     </fieldset>
 
 
@@ -97,6 +97,28 @@
         while (list.hasChildNodes()) {
         list.removeChild(list.childNodes[0]);
         }
+    }
+    function refreshList() {
+        var list = document.getElementById("numberList");
+        // If the <ul> element has any child nodes, remove its first child node
+        while (list.hasChildNodes()) {
+        list.removeChild(list.childNodes[0]);
+        }
+        for(var i = 0; i < numbers.length; i++) {
+            var node = document.createElement("LI");                 // Create a <li> node
+            var textnode = document.createTextNode( numbers[i]);         // Create a text node
+            node.appendChild(textnode);   
+            document.getElementById("numberList").appendChild(node);
+        }
+    }
+
+    function resetCalc() {
+        var list = document.getElementById("numberList");
+        // If the <ul> element has any child nodes, remove its first child node
+        while (list.hasChildNodes()) {
+        list.removeChild(list.childNodes[0]);
+        }
+        numbers = []; 
     }
 </script>
 
