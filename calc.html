@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+
+    <style>
+        fieldset {
+            width: 60%;
+            margin: 20px;
+        }
+    </style>
+
+   
+
+</head>
+
+<body>
+    <fieldset>
+        <legend>Toolbar</legend>
+        <div>
+            Number
+            <input type='text' id='number' />
+            <input type='button' value='Add To List' onclick="addToList()"  />
+            <input type='button' value='Clear Display' onclick='clearDisplay()' />
+            <input type='button' value='Reset Calculator' onclick=""   />
+
+            <br/>
+            <input type='button' value='Sum'  onclick="sum()" />
+            <input type='button' value='Average' onclick="avg()" />
+            <input type='button' value='Find Min'  onclick="findMin()"/>
+
+        </div>
+
+    </fieldset>
+
+    <hr/>
+
+    <fieldset>
+        <legend>Console</legend>
+
+        <div id='console'>
+
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Number List</legend>
+
+        <ul id='numberList'>
+
+        </ul>
+
+        <input type='button' value='refresh list'  />
+    </fieldset>
+
+
+   
+</body>
+<script>
+    var numbers = []; 
+    function addToList() {
+        var x = document.getElementById("number").value;
+        var node = document.createElement("LI");                 // Create a <li> node
+        var textnode = document.createTextNode(x);         // Create a text node
+        node.appendChild(textnode);   
+        document.getElementById("numberList").appendChild(node);
+        numbers.push(parseInt(x));
+    }
+    function sum() {
+        var sum = numbers.reduce(function(a, b){
+        return a + b;
+         }, 0);
+        var textnode = document.createTextNode(sum);         // Create a text node
+        document.getElementById("console").appendChild(textnode);
+    }
+    function avg() {
+        var sum = 0;
+        for(var i = 0; i < numbers.length; i++) {
+            sum += numbers[i];  
+        }
+        var textnode = document.createTextNode(sum/numbers.length);   // Create a text node
+        document.getElementById("console").appendChild(textnode);
+    }
+    function findMin() {
+        
+    }
+    function clearDisplay() {
+        var list = document.getElementById("numberList");
+        // If the <ul> element has any child nodes, remove its first child node
+        while (list.hasChildNodes()) {
+        list.removeChild(list.childNodes[0]);
+        }
+    }
+</script>
+
+</html>
