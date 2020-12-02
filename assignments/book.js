@@ -31,43 +31,43 @@ class BookManager{
     }
 
     getBooksByAuthor(author){
-        let booksByAuthor = [];
+        let result = [];
         for(let b of this.books){
             if(b.author===author){
-                booksByAuthor.push(b);
+                result.push(b);
             }
         }
-        return booksByAuthor;
+        return result;
     }
 
     getBooksInPriceRange(min,max){
-        let booksByPrice = [];
+        let result = [];
         for(let b of this.books){
-            if(b.price<=max || b.price>=min){
-                booksByPrice.push(b);
+            if(b.price<=max && b.price>=min){
+                result.push(b);
             }
         }
-        return booksByPrice;
+        return result;
     }
 
     getBooksInRatingRange(min,max){
-        let booksByRatings = [];
+        let result = [];
         for(let b of this.books){
-            if(b.rating<=max || b.rating>=min){
-                booksByRatings.push(b);
+            if(b.rating<=max && b.rating>=min){
+                result.push(b);
             }
         }
-        return booksByRatings;
+        return result;
     }
 
     search(text){
-        let matchedBooks = [];
+        let result = [];
         for(let b of this.books){
             if(b.title.search(text)){
-                matchedBooks.push(b);
+                result.push(b);
             }
         }
-        return matchedBooks;
+        return result;
     }
 }
 
@@ -83,8 +83,9 @@ function showBooks(books,message=''){
 
 
 let manager=new BookManager();
-
 showBooks(manager.getAll(), "All Books");
-
 showBooks(manager.getBooksByAuthor("John Grisham"),"Books by John Grisham");
+showBooks(manager.getBooksInRatingRange(4.5,5),"Books by Rating range(4.5,5)");
+showBooks(manager.getBooksInPriceRange(50,200),"Books by Price range(50,200)");
+showBooks(manager.search('God'),"Books by keyword God");
 
