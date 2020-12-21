@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+.cell{
+  font-family: 'Indie Flower', cursive;
+  font-size: 50px;
+  widows: 80px;
+  height: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  min-height: 80px;
+  min-height: 80px;
+  background: white;
+  margin: 0px;
+}
+
+.cell:hover{
+  background-color:wheat;
+}
+
+.cell:visited{
+  text-decoration: none;
+}
+
+.game{
+  padding: 10%;
+  align-items: center center;
+}
